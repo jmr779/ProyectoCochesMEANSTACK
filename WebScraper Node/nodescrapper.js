@@ -1,4 +1,6 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
+//const getResults = require('../scraper');
 //WebScrapper Mercedes.
 let mercedesUrl = 'https://www.mercedes-benz.es';
 (async () => {
@@ -9,8 +11,8 @@ let mercedesUrl = 'https://www.mercedes-benz.es';
 
     await page.click("button[class=modeloverview__showMoreBtn]");
 
-page.evaluate(function () {
-        window.scrollTo(0,document.body.scrollHeight);
+    page.evaluate(function () {
+        window.scrollTo(0, document.body.scrollHeight);
     })
 
     // get car details
@@ -27,14 +29,22 @@ page.evaluate(function () {
                 cocheJson.price = cochelement.querySelector('span.aem--is-no-wrapped').innerText;
                 cocheJson.image = cochelement.querySelector('div.modeloverview__thumbnail > a > img').getAttribute("data-src");
             }
-            catch (exception){
+            catch (exception) {
 
             }
             coches.push(cocheJson);
         });
         return coches;
     });
-
-    console.dir(cochesData);
+    (async () => {
+        let results = cochesData;
+        let jsonString = JSON.stringify(results);
+        fs.writeFileSync('../WebScraper Node/output.json', jsonString, 'utf-8');
+    })()
+    //console.dir(cochesData);
+    console.dir("WebScrapper Realizado");
 })();
+
+
+
 //End WebScrapper Mercedes.

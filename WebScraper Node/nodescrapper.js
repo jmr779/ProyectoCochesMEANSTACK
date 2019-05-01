@@ -24,6 +24,7 @@ let mercedesUrl = 'https://www.mercedes-benz.es';
         cochesElms.forEach((cochelement) => {
             let cocheJson = {};
             try {
+                cocheJson.marca = "Mercedes";
                 cocheJson.model = cochelement.querySelector('p.modeloverview__modelName').innerText;
                 cocheJson.body = cochelement.querySelector('p.modeloverview__modelBodyStyle').innerText;
                 cocheJson.price = cochelement.querySelector('span.aem--is-no-wrapped').innerText;

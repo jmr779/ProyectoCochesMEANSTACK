@@ -1,5 +1,8 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+//¿Esta bien?
+var model;
+var Model = require('./express-server/model');
 //const getResults = require('../scraper');
 //WebScrapper Mercedes.
 let mercedesUrl = 'https://www.mercedes-benz.es';
@@ -43,7 +46,16 @@ let mercedesUrl = 'https://www.mercedes-benz.es';
         fs.writeFileSync('../WebScraper Node/output.json', jsonString, 'utf-8');
     })()
     //console.dir(cochesData);
-    console.dir("WebScrapper Realizado");
+    model = new Model(cochesData);
+   
+    model.save(function(err) {
+      if (err) {
+        console.log('Database err saving: ');
+      }else{
+        console.dir("WebScrapper Realizado");
+
+      }
+    });
 })();
 
 

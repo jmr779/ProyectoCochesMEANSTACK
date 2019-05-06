@@ -3,8 +3,17 @@ Aplicación desarrollada haciendo uso de la tecnología MEAN STACK consistente e
 
 Estructura de la aplicación.
 1. WebScraper Node --> Webscrapper realizado con node.
-2. express-server --> servidor express + base de datos mongo.
+2. express-server --> servidor express + base de datos mongo (Puerto 3000).
 3. angular-client --> 
-4. docker-compose.yml --> Lanzado mediante docker.
+4. docker-compose.yml --> Lanzado mediante docker ().
+
+Para lanzar.
+
+```ssh
+-docker-compose build
+````
+```ssh
+-docker-compose up
+```
 
 EN DESARROLLO...

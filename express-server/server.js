@@ -48,25 +48,17 @@ app.get('/coches', (req, res) => {
   });
 });
 
-/* DELETE all coches. 
+/* DELETE all coches. */ 
 app.delete('/coches', function (req, res) {
-  Coche.update(error => {
-    if (error) res.status(500).send(error);
-  
-    res.status(201).json({
-        message: 'Coche deleted successfully'
-    });
+  Coche.remove({}, function (err) {
+    if (err) {
+        res.json({ succes: false, msg: 'Problem with delete coches.' });
+    }
+    else {
+        res.json({ succes: true, msg: 'Coches deleted' });
+    }
   });
-});*/
-
-/* GET one Coche. 
-app.get('/coches/:id', (req, res) => {
-  Coche.findById(req.param.id, (err, coches) => {
-      if (err) res.status(500).send(error)
-
-      res.status(200).json(coches);
-  });
-});*/
+});
 
 // POST one coche.
 app.post('/coches', function (req, res) {
@@ -86,3 +78,38 @@ app.post('/coches', function (req, res) {
   });
 });
 
+/* GET one Coche by id. */
+app.get('/coches/:id', (req, res) => {
+  Coche.findById(req.params.id, function (err, coches) {
+    if (!err) {
+        console.log('GET /coches/' + req.params.id);
+        res.send(coches);
+    } else {
+        console.log('ERROR: ' + err);
+    }
+  });
+});
+
+/*DELETE one coche by id */
+app.delete('/coches/:id', (req, res) => {
+  Coche.remove({ _id: req.params.id }, function (err) {
+    if (err) {
+        res.json({ succes: false, msg: 'Problem with delete coche.' });
+    }
+    else {
+        res.json({ succes: true, msg: 'Coche deleted' });
+    }
+  });
+});
+
+/* GET one Coche by modelo. 
+app.get('/mercedes/:modelo', (req, res) => {
+  Coche.findOne(req.params.modelo, function (err, coches) {
+    if (!err) {
+        console.log('GET /coches/' + req.params.modelo);
+        res.send(coches);
+    } else {
+        console.log('ERROR: ' + err);
+    }
+  });
+});*/

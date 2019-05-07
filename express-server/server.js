@@ -102,14 +102,41 @@ app.delete('/coches/:id', (req, res) => {
   });
 });
 
-/* GET one Coche by modelo. 
-app.get('/mercedes/:modelo', (req, res) => {
-  Coche.findOne(req.params.modelo, function (err, coches) {
-    if (!err) {
-        console.log('GET /coches/' + req.params.modelo);
-        res.send(coches);
-    } else {
-        console.log('ERROR: ' + err);
-    }
+/* GET coches by modelo. */
+app.get('/coches/mercedes/:modelo', (req, res) => {
+  Coche.find({modelo: req.params.modelo}, (err, coches) => {
+      if (err) res.status(500).send(error)
+      res.status(200).json(coches);
   });
-});*/
+});
+
+
+//UPDATE coches by id
+app.put('/coches/:id', function (req, res){
+  Coche.findById(req.params.id, function (err, coche) {
+    if (!err) {
+      console.log('GET /coches/' + req.params.id);
+      coche.marca = req.body.marca;
+      coche.modelo = req.body.modelo;
+      coche.tipo = req.body.tipo;
+      coche.precio = req.body.precio;
+      coche.imagen = req.body.imagen;
+
+      coche.save(function (err) {
+          if (err) {
+              res.json({ succes: false, msg: 'Problem updating coche' });
+          } else {
+              res.json({ succes: true, msg: 'Coche Updated' });
+          }
+      });
+    } else {
+      console.log('ERROR: ' + err);
+    }      
+    });
+});
+
+/* GET coche by modelo y tipo.
+app.get('/coches/mercedes/:modelo/:tipo', (req, res) => {
+  Coche.find({modelo: req.params.modelo}, (err, coches) => {
+    find({tipo: req.params.tipo}, (err, cars) => {
+      if (err) res.status(500) */

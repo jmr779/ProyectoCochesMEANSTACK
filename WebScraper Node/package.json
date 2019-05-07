@@ -1,0 +1,19 @@
+{
+  "name": "webscraper-node",
+  "version": "1.0.0",
+  "description": "Webscraper desarrollado mediante node a partir de la página de mercedes donde se obtienen la marca, el modelo, el precio y la imagen.",
+  "main": "nodescrapper.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "puppeteer": "^1.15.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

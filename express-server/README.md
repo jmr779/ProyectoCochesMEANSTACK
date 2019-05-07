@@ -1,10 +1,6 @@
 # Express-server
 Api creada con express y node.
-## Almacenar datos
-Se hace uso del archivo jsonToApi, al ejecutarlo hará uso del webscraper ("scraperMercedes.json") y mediante la api, introducirá todos los datos en la base de datos.
-```ssh
--node jsonToApi.js
-```
+
 ## Rutas de la api:
 ### Obtener todos los coches: GET
 http://localhost:3000/coches

@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+var request = require('request');
 const fs = require('fs');
 
 //WebScrapper Mercedes.
@@ -37,11 +38,40 @@ let mercedesUrl = 'https://www.mercedes-benz.es';
         });
         return coches;
     });
+
+
     (async () => {
-        let jsonString = JSON.stringify(cochesData);
-        fs.writeFileSync('../express-server/scraperMercedes.json', jsonString, 'utf-8');
+
+        cochesData.forEach(coche => {
+            //Step 1 - Set the headers
+            var headers = {
+                'Content-Type': 'application/json'
+            }
+
+            //Step 2 - Configure the request
+            var options = {
+                url: 'http://localhost:3000/coches',
+                method: 'POST',
+                headers: headers,
+                json:{
+                    marca: coche.marca,
+                    modelo: coche.model,
+                    tipo: coche.body,
+                    precio: coche.price,
+                    imagen: coche.image
+                }
+            }
+
+            //Step 3 - do the request
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    console.log(body);
+                }
+            });
+        })
+        //console.log(cochesData);
     })()
-    
+
 })();
 
 //End WebScrapper Mercedes.

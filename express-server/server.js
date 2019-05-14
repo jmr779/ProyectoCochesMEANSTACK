@@ -13,6 +13,8 @@ mongoose.connect(dbHost);
 
 // Require all models
 var Coche = require("./models/coche.js");
+var Marca = require("./models/marca.js");
+
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -40,15 +42,15 @@ app.get('/', (req, res) => {
   res.send('api works');
 });
 
-/* GET all coches. */
+/* GET all coches. 
 app.get('/coches', (req, res) => {
   Coche.find({}, (err, coches) => {
       if (err) res.status(500).send(error)
       res.status(200).json(coches);
   });
-});
+});*/
 
-/* DELETE all coches. */ 
+/* DELETE all coches. 
 app.delete('/coches', function (req, res) {
   Coche.remove({}, function (err) {
     if (err) {
@@ -58,17 +60,20 @@ app.delete('/coches', function (req, res) {
         res.json({ succes: true, msg: 'Coches deleted' });
     }
   });
-});
+});*/ 
 
 // POST one coche.
 app.post('/coches', function (req, res) {
   var newCoche = new Coche({
-      marca: req.body.marca,
       modelo: req.body.modelo,
       tipo: req.body.tipo,
       precio: req.body.precio,
       imagen: req.body.imagen,
   });
+  var newMarca = new Marca({
+      marca: req.body.marca,
+  });
+  //Marca.findOne()
   newCoche.save(error => {
     if (error) res.status(500).send(error);
   
@@ -78,7 +83,7 @@ app.post('/coches', function (req, res) {
   });
 });
 
-/* GET one Coche by id. */
+/* GET one Coche by id. 
 app.get('/coches/:id', (req, res) => {
   Coche.findById(req.params.id, function (err, coches) {
     if (!err) {
@@ -88,9 +93,9 @@ app.get('/coches/:id', (req, res) => {
         console.log('ERROR: ' + err);
     }
   });
-});
+});*/
 
-/*DELETE one coche by id */
+/*DELETE one coche by id 
 app.delete('/coches/:id', (req, res) => {
   Coche.remove({ _id: req.params.id }, function (err) {
     if (err) {
@@ -100,18 +105,18 @@ app.delete('/coches/:id', (req, res) => {
         res.json({ succes: true, msg: 'Coche deleted' });
     }
   });
-});
+});*/
 
-/* GET coches by modelo. */
+/* GET coches by modelo. 
 app.get('/coches/mercedes/:modelo', (req, res) => {
   Coche.find({modelo: req.params.modelo}, (err, coches) => {
       if (err) res.status(500).send(error)
       res.status(200).json(coches);
   });
-});
+});*/
 
 
-//UPDATE coches by id
+/*UPDATE coches by id
 app.put('/coches/:id', function (req, res){
   Coche.findById(req.params.id, function (err, coche) {
     if (!err) {
@@ -133,7 +138,7 @@ app.put('/coches/:id', function (req, res){
       console.log('ERROR: ' + err);
     }      
     });
-});
+});*/
 
 /* GET coche by modelo y tipo.
 app.get('/coches/mercedes/:modelo/:tipo', (req, res) => {

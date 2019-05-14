@@ -4,11 +4,9 @@ var mongoose =  require('mongoose');
 // Usaremos los esquemas
 var Schema = mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
-var CocheSchema = Schema({
-    modelo: String,
-    tipo: String,
-    precio: String,
-    imagen: String
+var MarcaSchema = Schema({
+    marca: String,
+    coche: { type: Schema.ObjectId, ref: "Coche" }
 });
 // Exportamos el modelo para usarlo en otros ficheros
-module.exports = mongoose.model('Coche', CocheSchema);
+module.exports = mongoose.model('Marca', MarcaSchema);

@@ -1,5 +1,4 @@
-
-body {
+.contenedor {
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
     color: #ffffff; 
     font-size: 18px; 
@@ -14,6 +13,7 @@ body {
     -webkit-border-radius: 35px 35px 0 0; 
     margin-bottom: 0;
 }
+
 
 img{
     height: 20em;

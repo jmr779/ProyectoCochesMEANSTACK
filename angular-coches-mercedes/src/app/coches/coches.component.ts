@@ -20,10 +20,10 @@ export class CochesComponent implements OnInit {
     this.getCoches();
   }
 
-  onSelect(coche: Coche): void {
-    this.selectedCoche = coche;
+  handleClick(coche: Coche) {
+    console.log('Click!', coche.modelo);
   }
- 
+
   getCoches(): void {
     this.cocheService.getCoches()
         .subscribe(coches => this.coches = coches);

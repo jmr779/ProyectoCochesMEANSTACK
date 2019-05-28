@@ -23,7 +23,7 @@ export class CochesComponent implements OnInit {
   }
 
   handleClick(coche: Coche) {
-    console.log('Click!', coche.modelo);
+    //console.log('Click!', coche.modelo);
     const dialogRef = this.dialog.open(PopupComponent, {
       data: coche
     });

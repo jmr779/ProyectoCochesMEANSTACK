@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 })
 export class PopupComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Coche) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {
   }

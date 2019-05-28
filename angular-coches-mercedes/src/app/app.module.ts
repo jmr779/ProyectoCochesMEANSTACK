@@ -7,19 +7,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {LogotipoAppComponent} from './logotipo-app/logotipo-app.component';
+import { PopupComponent } from './popup/popup.component';
+import { MatDialogModule } from  '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CochesComponent,
-    LogotipoAppComponent
+    LogotipoAppComponent,
+    PopupComponent
   ],
+  entryComponents: [PopupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

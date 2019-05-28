@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Coche } from '../coche';
 import { CocheService } from '../coche.service';
-
+import { PopupComponent } from '../popup/popup.component';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-coches',
@@ -14,7 +15,8 @@ export class CochesComponent implements OnInit {
  
   coches: Coche[];
 
-  constructor(private cocheService: CocheService) { }
+  constructor(private cocheService: CocheService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getCoches();
@@ -22,6 +24,10 @@ export class CochesComponent implements OnInit {
 
   handleClick(coche: Coche) {
     console.log('Click!', coche.modelo);
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: coche
+    });
+
   }
 
   getCoches(): void {

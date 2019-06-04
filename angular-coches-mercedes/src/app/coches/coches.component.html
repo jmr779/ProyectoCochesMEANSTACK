@@ -1,5 +1,7 @@
+<h1>Listado de Coches</h1>
+<input type="text" class="buscador" name="filterPost" placeholder="Buscar por Modelo" [(ngModel)] = "filterPost">
 <mat-grid-list cols="4" rowHeight="1.3:1" gutterSize='10px'>
-    <mat-grid-tile *ngFor="let coche of coches" >
+    <mat-grid-tile *ngFor="let coche of coches | filter:filterPost" >
     <button class = "btn" (click)="handleClick(coche)">
         <div >
         <h2>{{coche.marca | uppercase}} {{coche.modelo}} </h2>

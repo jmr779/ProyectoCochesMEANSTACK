@@ -10,6 +10,8 @@ import {LogotipoAppComponent} from './logotipo-app/logotipo-app.component';
 import { PopupComponent } from './popup/popup.component';
 import { MatDialogModule } from  '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     CochesComponent,
     LogotipoAppComponent,
-    PopupComponent
+    PopupComponent,
+    FilterPipe
   ],
   entryComponents: [PopupComponent],
   imports: [
@@ -28,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MatGridListModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
 
   ],
   providers: [],

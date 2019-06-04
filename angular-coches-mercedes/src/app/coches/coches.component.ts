@@ -15,8 +15,13 @@ export class CochesComponent implements OnInit {
  
   coches: Coche[];
 
+
+
   constructor(private cocheService: CocheService,
     public dialog: MatDialog) { }
+
+
+  filterPost = '';
 
   ngOnInit() {
     this.getCoches();
